@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Navbar from "./Componets/Navbar";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// import Movies from "./Componets/Movies";
+import Recipes from "./Componets/Recipes";
+import Quotes from "./Componets/Quotes";
+import RecipeDetails from "./Componets/RecipeDetails";
+import ViewRecipe from "./Componets/ViewPreparation";
+import PageNotFound from "./Componets/PageNotFound";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <Navbar />
+        <Routes>
+          {/* <Route path="/" element={<Movies />} /> */}
+          {/* <Route path="/recipes" element={<Recipes />} /> */}
+          <Route path="/" element={<Recipes />} />
+          <Route path="/quotes" element={<Quotes />} />
+          <Route path='/recipes/:id' element={<RecipeDetails />} />
+          <Route path='/recipes/:id/viewpreparation' element={<ViewRecipe />} />
+          <Route path='*' element={<PageNotFound />} />
+        </Routes>
+      </Router>
+    </>
   );
 }
 
